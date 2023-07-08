@@ -34,9 +34,18 @@ app.use(
   })
 );
 
-// Routes
+//////////////// Routes /////////////////
+
+// Web Routes
 app.use(require("./routes/web/web.routes"));
+
+// Admin Routes
 app.use("/admin", require("./routes/admin/admin.routes"));
+app.use("/admin", require("./routes/admin/users.routes"));
+app.use("/admin", require("./routes/admin/products.routes"));
+
+// Auth Routes
+app.use("/auth", require("./routes/auth/auth.route"));
 
 // MongoDB Connection
 mongoose

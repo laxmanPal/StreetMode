@@ -5435,8 +5435,8 @@ h6.post-title {
   margin-right: 5px;
 }
 
-.header-info > ul > li:hover > a {
-  color: #333;
+.header-info > ul > li > a:hover {
+  color: #c2c2c2;
 }
 
 .header-info > ul > li:hover > ul.language-dropdown {

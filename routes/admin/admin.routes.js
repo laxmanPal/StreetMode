@@ -1,20 +1,16 @@
 const express = require("express");
+const { isAdmin } = require("../../middleware/auth.middleware");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", isAdmin, (req, res) => {
   res.render("admin/dashboard");
 });
-
-router.get("/products", (req, res) => {
-  res.render("admin/products");
-});
-
-router.get("/orders", (req, res) => {
+router.get("/orders", isAdmin, (req, res) => {
   res.render("admin/orders");
 });
 
-router.get("/categories", (req, res) => {
+router.get("/categories", isAdmin, (req, res) => {
   res.render("admin/categories");
 });
 
