@@ -20,106 +20,22 @@ include("../includes/web/mobile_menu.ejs") %>
                 <div class="detail-gallery">
                   <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                   <!-- MAIN SLIDES -->
-                  <div class="product-image-slider">
+                  <div class="">
                     <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-2.jpg"
-                        alt="product image"
-                      />
+                      <img src="<%= product.img %>" alt="product image" />
                     </figure>
-                    <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-1.jpg"
-                        alt="product image"
-                      />
-                    </figure>
-                    <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-3.jpg"
-                        alt="product image"
-                      />
-                    </figure>
-                    <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-4.jpg"
-                        alt="product image"
-                      />
-                    </figure>
-                    <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-5.jpg"
-                        alt="product image"
-                      />
-                    </figure>
-                    <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-6.jpg"
-                        alt="product image"
-                      />
-                    </figure>
-                    <figure class="border-radius-10">
-                      <img
-                        src="web/imgs/shop/product-16-7.jpg"
-                        alt="product image"
-                      />
-                    </figure>
-                  </div>
-                  <!-- THUMBNAILS -->
-                  <div class="slider-nav-thumbnails pl-15 pr-15">
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-3.jpg"
-                        alt="product image"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-4.jpg"
-                        alt="product image"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-5.jpg"
-                        alt="product image"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-6.jpg"
-                        alt="product image"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-7.jpg"
-                        alt="product image"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-8.jpg"
-                        alt="product image"
-                      />
-                    </div>
-                    <div>
-                      <img
-                        src="web/imgs/shop/thumbnail-9.jpg"
-                        alt="product image"
-                      />
-                    </div>
                   </div>
                 </div>
                 <!-- End Gallery -->
               </div>
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="detail-info">
-                  <h2 class="title-detail">Colorful Pattern Shirts HD450</h2>
+                  <h2 class="title-detail"><%= product.name %></h2>
                   <div class="product-detail-rating">
                     <div class="pro-details-brand">
                       <span>
                         Brands:
-                        <a href="shop-grid-right.html">Bootstrap</a></span
+                        <a href="shop-grid-right.html"> - </a></span
                       >
                     </div>
                     <div class="product-rate-cover text-end">
@@ -133,7 +49,11 @@ include("../includes/web/mobile_menu.ejs") %>
                   </div>
                   <div class="clearfix product-price-cover">
                     <div class="product-price primary-color float-left">
-                      <ins><span class="text-brand">$120.00</span></ins>
+                      <ins
+                        ><span class="text-brand"
+                          >$<%= product.price %></span
+                        ></ins
+                      >
                       <ins
                         ><span class="old-price font-md ml-15"
                           >$200.00</span
@@ -248,7 +168,7 @@ include("../includes/web/mobile_menu.ejs") %>
                     </li>
                     <li>
                       Availability:<span class="in-stock text-success ml-5"
-                        >8 Items In Stock</span
+                        ><%= product.quantity %> Items In Stock</span
                       >
                     </li>
                   </ul>
@@ -408,28 +328,28 @@ include("../includes/web/mobile_menu.ejs") %>
                     <li class="social-facebook">
                       <a href="#"
                         ><img
-                          src="web/imgs/theme/icons/icon-facebook.svg"
+                          src="/web/imgs/theme/icons/icon-facebook.svg"
                           alt=""
                       /></a>
                     </li>
                     <li class="social-twitter">
                       <a href="#"
                         ><img
-                          src="web/imgs/theme/icons/icon-twitter.svg"
+                          src="/web/imgs/theme/icons/icon-twitter.svg"
                           alt=""
                       /></a>
                     </li>
                     <li class="social-instagram">
                       <a href="#"
                         ><img
-                          src="web/imgs/theme/icons/icon-instagram.svg"
+                          src="/web/imgs/theme/icons/icon-instagram.svg"
                           alt=""
                       /></a>
                     </li>
                     <li class="social-linkedin">
                       <a href="#"
                         ><img
-                          src="web/imgs/theme/icons/icon-pinterest.svg"
+                          src="/web/imgs/theme/icons/icon-pinterest.svg"
                           alt=""
                       /></a>
                     </li>
@@ -447,7 +367,7 @@ include("../includes/web/mobile_menu.ejs") %>
                         >
                           <div class="user justify-content-between d-flex">
                             <div class="thumb text-center">
-                              <img src="web/imgs/page/avatar-6.jpg" alt="" />
+                              <img src="/web/imgs/page/avatar-6.jpg" alt="" />
                               <h6><a href="#">Jacky Chan</a></h6>
                               <p class="font-xxs">Since 2012</p>
                             </div>
@@ -481,7 +401,7 @@ include("../includes/web/mobile_menu.ejs") %>
                         >
                           <div class="user justify-content-between d-flex">
                             <div class="thumb text-center">
-                              <img src="web/imgs/page/avatar-7.jpg" alt="" />
+                              <img src="/web/imgs/page/avatar-7.jpg" alt="" />
                               <h6><a href="#">Ana Rosie</a></h6>
                               <p class="font-xxs">Since 2008</p>
                             </div>
@@ -512,7 +432,7 @@ include("../includes/web/mobile_menu.ejs") %>
                         >
                           <div class="user justify-content-between d-flex">
                             <div class="thumb text-center">
-                              <img src="web/imgs/page/avatar-8.jpg" alt="" />
+                              <img src="/web/imgs/page/avatar-8.jpg" alt="" />
                               <h6><a href="#">Steven Keny</a></h6>
                               <p class="font-xxs">Since 2010</p>
                             </div>
@@ -707,12 +627,12 @@ include("../includes/web/mobile_menu.ejs") %>
                           <a href="shop-product-right.html" tabindex="0">
                             <img
                               class="default-img"
-                              src="web/imgs/shop/product-2-1.jpg"
+                              src="/web/imgs/shop/product-2-1.jpg"
                               alt=""
                             />
                             <img
                               class="hover-img"
-                              src="web/imgs/shop/product-2-2.jpg"
+                              src="/web/imgs/shop/product-2-2.jpg"
                               alt=""
                             />
                           </a>
@@ -770,12 +690,12 @@ include("../includes/web/mobile_menu.ejs") %>
                           <a href="shop-product-right.html" tabindex="0">
                             <img
                               class="default-img"
-                              src="web/imgs/shop/product-3-1.jpg"
+                              src="/web/imgs/shop/product-3-1.jpg"
                               alt=""
                             />
                             <img
                               class="hover-img"
-                              src="web/imgs/shop/product-4-2.jpg"
+                              src="/web/imgs/shop/product-4-2.jpg"
                               alt=""
                             />
                           </a>
@@ -833,12 +753,12 @@ include("../includes/web/mobile_menu.ejs") %>
                           <a href="shop-product-right.html" tabindex="0">
                             <img
                               class="default-img"
-                              src="web/imgs/shop/product-4-1.jpg"
+                              src="/web/imgs/shop/product-4-1.jpg"
                               alt=""
                             />
                             <img
                               class="hover-img"
-                              src="web/imgs/shop/product-4-2.jpg"
+                              src="/web/imgs/shop/product-4-2.jpg"
                               alt=""
                             />
                           </a>
@@ -896,12 +816,12 @@ include("../includes/web/mobile_menu.ejs") %>
                           <a href="shop-product-right.html" tabindex="0">
                             <img
                               class="default-img"
-                              src="web/imgs/shop/product-5-1.jpg"
+                              src="/web/imgs/shop/product-5-1.jpg"
                               alt=""
                             />
                             <img
                               class="hover-img"
-                              src="web/imgs/shop/product-3-2.jpg"
+                              src="/web/imgs/shop/product-3-2.jpg"
                               alt=""
                             />
                           </a>
@@ -958,7 +878,7 @@ include("../includes/web/mobile_menu.ejs") %>
             <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
               <img
                 class="border-radius-10"
-                src="web/imgs/banner/banner-4.png"
+                src="/web/imgs/banner/banner-4.png"
                 alt=""
               />
               <div class="banner-text">

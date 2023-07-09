@@ -38,6 +38,7 @@ app.use(
 
 // Web Routes
 app.use(require("./routes/web/web.routes"));
+app.use(require("./routes/web/cart.routes"));
 
 // Admin Routes
 app.use("/admin", require("./routes/admin/admin.routes"));
