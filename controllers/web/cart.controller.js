@@ -27,8 +27,8 @@ exports.addToCart = async (req, res) => {
     const newCart = await new Cart({
       userId: userId,
       productId: productId,
-      quantity: quantity,
-      subtotal: product.price * quantity,
+      quantity: quantity ? quantity : 1,
+      subtotal: quantity ? product.price * quantity : product.price * 1,
     });
 
     await newCart.save();

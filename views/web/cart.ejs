@@ -27,6 +27,7 @@ include("../includes/web/mobile_menu.ejs") %>
                 </tr>
               </thead>
               <tbody>
+                <% let total = 0; %>
                 <% if(carts.length === 0){ %>
                 <tr>
                   <td></td>
@@ -37,6 +38,7 @@ include("../includes/web/mobile_menu.ejs") %>
                   <td></td>
                 </tr>
                 <% }else{ %> <% for(let cart of carts) { %>
+                  <% total += +cart.subtotal %>
                 <tr>
                   <td class="image product-thumbnail">
                     <img src="<%= cart.productId.img %>" alt="#" />
@@ -426,7 +428,7 @@ include("../includes/web/mobile_menu.ejs") %>
                       <tr>
                         <td class="cart_total_label">Cart Subtotal</td>
                         <td class="cart_total_amount">
-                          <span class="font-lg fw-900 text-brand">$240.00</span>
+                          <span class="font-lg fw-900 text-brand">$<%= parseFloat(total).toFixed(2) %></span>
                         </td>
                       </tr>
                       <tr>
@@ -440,7 +442,7 @@ include("../includes/web/mobile_menu.ejs") %>
                         <td class="cart_total_amount">
                           <strong
                             ><span class="font-xl fw-900 text-brand"
-                              >$240.00</span
+                              >$<%= parseFloat(total).toFixed(2) %></span
                             ></strong
                           >
                         </td>
@@ -461,3 +463,20 @@ include("../includes/web/mobile_menu.ejs") %>
 </main>
 <%- include("../includes/web/footer.ejs") %> <%-
 include("../includes/web/foot.ejs") %>
+
+
+<li><a href="#"><i class="fi-rs-user"></i><%= userName %></i></a>
+  <ul class="sub-menu">
+
+      <li><a href=""><i class="fi-rs-sign-out mr-10"></i>Logout</a></li>
+  </ul>
+</li>
+
+<li>
+  <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
+  <ul class="language-dropdown">
+      <li><a href="#"><img src="assets/imgs/theme/flag-fr.png" alt="">Français</a></li>
+      <li><a href="#"><img src="assets/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
+      <li><a href="#"><img src="assets/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
+  </ul>
+</li>
