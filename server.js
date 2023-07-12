@@ -42,22 +42,21 @@ app.use(
 // Custom Slobal Middleware
 
 app.use(async (req, res, next) => {
-  if (!req.session) {
-    userName = false;
-    return next();
+  try {
+    if (!req.session.userId) {
+      userName = false;
+      return next();
+    }
+
+    const user = await User.findById(req.session.userId);
+
+    if (user) {
+      userName = user ? user.firstName : "User";
+      next();
+    }
+  } catch (error) {
+    console.log(error);
   }
-
-  const user = await User.findById(req.session.userId);
-
-  userName = user.firstName ? user.firstName : "User";
-  next();
-  // Customer.findByPk(req.session.custId)
-  //   .then(cust => {
-  //     req.cust = cust;
-  //     custName = cust ? cust.name : 'Name'
-  //     next();
-  //   })
-  //   .catch(err => console.log(err));
 });
 
 //////////////// Routes /////////////////
