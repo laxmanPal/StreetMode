@@ -311,7 +311,7 @@ include("../includes/web/mobile_menu.ejs") %>
       </div>
     </div>
   </section>
-  <section class="deals section-padding">
+  <!-- <section class="deals section-padding">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 deal-co">
@@ -380,7 +380,7 @@ include("../includes/web/mobile_menu.ejs") %>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <section class="mt-50 mb-50">
     <div class="container">
       <div class="row">
@@ -413,7 +413,7 @@ include("../includes/web/mobile_menu.ejs") %>
                     >
                       <i class="fi-rs-search"></i
                     ></a> -->
-                    <form action="/add-to-wishlist" method="post">
+                    <form class="add-to-wishlist-form" action="" method="post">
                       <input
                         type="hidden"
                         name="productId"
@@ -454,7 +454,7 @@ include("../includes/web/mobile_menu.ejs") %>
                     <span class="">$<%= product.price %></span>
                   </div>
                   <div class="product-action-1 show">
-                    <form action="/add-to-cart" method="POST">
+                    <form class="add-to-cart-form" method="POST">
                       <input
                         type="hidden"
                         value="<%= product._id %>"
@@ -680,5 +680,69 @@ include("../includes/web/mobile_menu.ejs") %>
     </div>
   </section>
 </main>
-<%- include("../includes/web/footer.ejs") %> <%-
-include("../includes/web/foot.ejs") %>
+<%- include("../includes/web/footer.ejs") %>
+
+<script>
+  const wishlistForm = document.querySelectorAll(".add-to-wishlist-form");
+
+  wishlistForm.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const productId = formData.get("productId");
+
+      fetch("/add-to-wishlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId }),
+        redirect: "follow",
+      })
+        .then((response) => {
+          response.json();
+          console.log("Data Sended To Backend");
+        })
+        .then((data) => {
+          console.log("Response from server:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+  });
+
+  const cartForm = document.querySelectorAll(".add-to-cart-form");
+
+  cartForm.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const productId = formData.get("productId");
+      const quantity = formData.get("quantity");
+
+      fetch("/add-to-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId, quantity }),
+        redirect: "follow",
+      })
+        .then((response) => {
+          response.json();
+          console.log("Data Sended To Backend");
+        })
+        .then((data) => {
+          console.log("Response from server:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+  });
+</script>
+
+<%- include("../includes/web/foot.ejs") %>

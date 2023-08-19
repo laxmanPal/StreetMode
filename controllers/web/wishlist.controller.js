@@ -28,7 +28,7 @@ exports.addToWishlist = async (req, res) => {
     });
 
     await newWish.save();
-    res.redirect("/shop");
+    res.send("Product Added To Wishlist").json();
   } catch (error) {
     console.log(error);
   }

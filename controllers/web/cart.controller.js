@@ -32,9 +32,10 @@ exports.addToCart = async (req, res) => {
     });
 
     await newCart.save();
-    res.redirect("/shop");
+    res.json({ result: "Product Added To Cart" });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
   }
 
   // res.render("web/cart");

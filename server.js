@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const User = require("./models/user.model");
+const cors = require("cors");
 
 // Dotenv Config
 require("dotenv").config();
@@ -38,6 +39,7 @@ app.use(
     }),
   })
 );
+app.use(cors());
 
 // Custom Slobal Middleware
 
