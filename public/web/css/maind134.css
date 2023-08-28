@@ -916,7 +916,7 @@ h5.widget-title {
 }
 
 .btn:hover {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .btn-shadow-brand {
@@ -998,7 +998,8 @@ button[type="submit"]:hover {
 
 .btn:hover,
 .button:hover {
-  background-color: #046963;
+  background-color: #ffffff;
+  border: 1px solid #000;
 }
 
 .btn.btn-sm,

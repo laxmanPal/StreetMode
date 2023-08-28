@@ -413,7 +413,14 @@ include("../includes/web/mobile_menu.ejs") %>
                     >
                       <i class="fi-rs-search"></i
                     ></a> -->
-                    <form class="add-to-wishlist-form" action="" method="post">
+
+                    <% let wishlistData = product._id %>
+
+                    <form
+                      action="/add-to-wishlist"
+                      class="add-to-wishlist-form"
+                      method="post"
+                    >
                       <input
                         type="hidden"
                         name="productId"
@@ -454,7 +461,11 @@ include("../includes/web/mobile_menu.ejs") %>
                     <span class="">$<%= product.price %></span>
                   </div>
                   <div class="product-action-1 show">
-                    <form class="add-to-cart-form" method="POST">
+                    <form
+                      action="/add-to-cart"
+                      class="add-to-cart-form"
+                      method="POST"
+                    >
                       <input
                         type="hidden"
                         value="<%= product._id %>"
@@ -478,7 +489,7 @@ include("../includes/web/mobile_menu.ejs") %>
       </div>
     </div>
   </section>
-  <section class="mb-50">
+  <!-- <section class="mb-50">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
@@ -678,11 +689,65 @@ include("../includes/web/mobile_menu.ejs") %>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 </main>
 <%- include("../includes/web/footer.ejs") %>
 
 <script>
+  // async function submitForm(url, data) {
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //       redirect: "follow",
+  //     });
+  //     const result = await response.json();
+  //     console.log("Success:", result);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // }
+
+  // const wishlistForm = document.querySelectorAll(".add-to-wishlist-form");
+
+  // wishlistForm.forEach((form) => {
+  //   form.addEventListener("submit", async (e) => {
+  //     e.preventDefault();
+
+  //     const formData = new FormData(e.target);
+  //     const productId = formData.get("productId");
+
+  //     try {
+  //       const response = await fetch("/add-to-wishlist", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ productId }),
+  //         redirect: "follow",
+  //       });
+  //       const result = await response.json();
+  //       console.log("Success:", result);
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   });
+  // });
+
+  // const cartForm = document.querySelectorAll(".add-to-cart-form");
+
+  // cartForm.forEach((form) => {
+  //   form.addEventListener("submit", (e) => {
+  //     e.preventDefault();
+  //     form.submit();
+  //   });
+  // });
+</script>
+
+<!-- <script>
   const wishlistForm = document.querySelectorAll(".add-to-wishlist-form");
 
   wishlistForm.forEach((form) => {
@@ -743,6 +808,6 @@ include("../includes/web/mobile_menu.ejs") %>
         });
     });
   });
-</script>
+</script> -->
 
 <%- include("../includes/web/foot.ejs") %>

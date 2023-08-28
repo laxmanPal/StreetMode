@@ -67,6 +67,7 @@ app.use(async (req, res, next) => {
 app.use(require("./routes/web/web.routes"));
 app.use(require("./routes/web/cart.routes"));
 app.use(require("./routes/web/wishlist.routes"));
+app.use(require("./routes/web/checkout.routes"));
 
 // Admin Routes
 app.use("/admin", require("./routes/admin/admin.routes"));

@@ -39,7 +39,7 @@ include("../includes/web/mobile_menu.ejs") %>
                 </tr>
                 <% }else{ %> <% for(let cart of carts) { %>
                   <% total += +cart.subtotal %>
-                <tr>
+                <tr id="<%= cart._id %>">
                   <td class="image product-thumbnail">
                     <img src="<%= cart.productId.img %>" alt="#" />
                   </td>
@@ -66,7 +66,7 @@ include("../includes/web/mobile_menu.ejs") %>
                     <span>$<%= cart.subtotal %> </span>
                   </td>
                   <td class="action" data-title="Remove">
-                  <form action="/remove-cart" method="post">
+                  <form class="remove-cart-form">
 
                     <input type="hidden" name="cartId" value="<%= cart._id %>">
 
@@ -80,19 +80,19 @@ include("../includes/web/mobile_menu.ejs") %>
               </tbody>
             </table>
           </div>
-          <div class="cart-action text-end">
+          <!-- <div class="cart-action text-end">
             <a class="btn mr-10 mb-sm-15"
               ><i class="fi-rs-shuffle mr-10"></i>Update Cart</a
             >
             <a class="btn"
               ><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a
             >
-          </div>
+          </div> -->
           <div class="divider center_icon mt-50 mb-50">
             <i class="fi-rs-fingerprint"></i>
           </div>
           <div class="row mb-50">
-            <div class="col-lg-6 col-md-12">
+            <!-- <div class="col-lg-6 col-md-12">
               <div class="heading_s1 mb-3">
                 <h4>Calculate Shipping</h4>
               </div>
@@ -416,7 +416,7 @@ include("../includes/web/mobile_menu.ejs") %>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-lg-6 col-md-12">
               <div class="border p-md-4 p-30 border-radius cart-totals">
                 <div class="heading_s1 mb-3">
@@ -450,7 +450,7 @@ include("../includes/web/mobile_menu.ejs") %>
                     </tbody>
                   </table>
                 </div>
-                <a href="#" class="btn">
+                <a href="billing-details" class="btn">
                   <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a
                 >
               </div>
@@ -461,22 +461,33 @@ include("../includes/web/mobile_menu.ejs") %>
     </div>
   </section>
 </main>
+<script>
+  const rmCart = document.querySelectorAll(".remove-cart-form");
+
+  rmCart.forEach(form=>{
+    form.addEventListener("submit" , (e)=>{
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const cartId = formData.get("cartId");
+      fetch("/remove-cart" , {
+        method:"POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body:JSON.stringify({cartId})
+      }).then((response) => {
+         return response.json();
+        })
+        .then((data) => {
+          document.getElementById(data.result).remove()
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    })
+  })
+
+
+</script>
 <%- include("../includes/web/footer.ejs") %> <%-
 include("../includes/web/foot.ejs") %>
-
-
-<li><a href="#"><i class="fi-rs-user"></i><%= userName %></i></a>
-  <ul class="sub-menu">
-
-      <li><a href=""><i class="fi-rs-sign-out mr-10"></i>Logout</a></li>
-  </ul>
-</li>
-
-<li>
-  <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
-  <ul class="language-dropdown">
-      <li><a href="#"><img src="assets/imgs/theme/flag-fr.png" alt="">Français</a></li>
-      <li><a href="#"><img src="assets/imgs/theme/flag-dt.png" alt="">Deutsch</a></li>
-      <li><a href="#"><img src="assets/imgs/theme/flag-ru.png" alt="">Pусский</a></li>
-  </ul>
-</li>

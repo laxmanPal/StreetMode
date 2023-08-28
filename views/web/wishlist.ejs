@@ -36,7 +36,7 @@ include("../includes/web/mobile_menu.ejs") %>
                   <td></td>
                 </tr>
                 <% }else{ %> <% for(let wishlist of wishlists){ %>
-                <tr>
+                <tr id="<%= wishlist._id %>">
                   <td class="image product-thumbnail">
                     <img src="<%= wishlist.productId.img %>" alt="#" />
                   </td>
@@ -71,7 +71,7 @@ include("../includes/web/mobile_menu.ejs") %>
                     </form>
                   </td>
                   <td class="action" data-title="Remove">
-                    <form action="/remove-wishlist" method="post">
+                    <form class="remove-wishlist-form">
                       <input
                         type="hidden"
                         name="wishListId"
@@ -92,5 +92,32 @@ include("../includes/web/mobile_menu.ejs") %>
     </div>
   </section>
 </main>
+<script>
+  const rmWishlist = document.querySelectorAll(".remove-wishlist-form");
+
+  rmWishlist.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const wishListId = formData.get("wishListId");
+      fetch("/remove-wishlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ wishListId }),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          document.getElementById(data.result).remove();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    });
+  });
+</script>
 <%- include("../includes/web/footer.ejs") %> <%-
 include("../includes/web/foot.ejs") %>

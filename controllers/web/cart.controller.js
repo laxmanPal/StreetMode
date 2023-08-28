@@ -32,13 +32,12 @@ exports.addToCart = async (req, res) => {
     });
 
     await newCart.save();
-    res.json({ result: "Product Added To Cart" });
+    // res.json({ result: "Product Added To Cart" });
+    res.redirect("/shop");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred" });
   }
-
-  // res.render("web/cart");
 };
 
 exports.removeCart = async (req, res) => {
@@ -47,7 +46,7 @@ exports.removeCart = async (req, res) => {
   try {
     const rmCart = await Cart.findByIdAndDelete(cartId);
 
-    res.redirect("/cart");
+    res.json({ result: cartId });
   } catch (error) {
     console.log(error);
   }

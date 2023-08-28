@@ -28,12 +28,11 @@ exports.addToWishlist = async (req, res) => {
     });
 
     await newWish.save();
-    res.send("Product Added To Wishlist").json();
+    // res.send("Product Added To Wishlist").json();
+    res.redirect("/shop");
   } catch (error) {
     console.log(error);
   }
-
-  // res.render("web/cart");
 };
 
 exports.removeWishlist = async (req, res) => {
@@ -42,8 +41,8 @@ exports.removeWishlist = async (req, res) => {
   try {
     const rmWishlist = await Wishlist.findByIdAndDelete(wishListId);
 
-    res.redirect("/wishlist");
-    // res.send(rmWishlist);
+    // res.redirect("/wishlist");
+    res.json({ result: wishListId });
   } catch (error) {
     console.log(error);
   }
