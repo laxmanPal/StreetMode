@@ -43,8 +43,8 @@ exports.checkout = async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:3000",
-      cancel_url: "http://localhost:3000/shop",
+      success_url: process.env.WEB_URL,
+      cancel_url: `${process.env.WEB_URL}/shop`,
     });
 
     if (session) {
@@ -54,8 +54,6 @@ exports.checkout = async (req, res) => {
       );
 
       const billingDetails = req.session.billingDetails;
-
-      console.log(billingDetails);
 
       const newOrder = new Order({
         userId: req.session.userId,
@@ -68,14 +66,13 @@ exports.checkout = async (req, res) => {
           state: billingDetails.state,
           zip: billingDetails.zipcode,
         },
-        paymentMethod: { type: "card" },
+        paymentMethod: "card",
         orderStatus: "complete",
       });
 
       await newOrder.save();
 
       await Cart.deleteMany({ userId: req.session.userId });
-      res.session.billingDetails = {};
     }
 
     res.redirect(session.url);
