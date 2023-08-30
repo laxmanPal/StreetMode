@@ -27,7 +27,8 @@ const orderSchema = new mongoose.Schema(
       zip: { type: String },
     },
     paymentMethod: {
-      type: { type: String, required: true },
+      type: String,
+      required: true,
     },
     orderStatus: { type: String, required: true },
   },

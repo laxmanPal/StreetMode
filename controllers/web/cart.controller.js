@@ -32,7 +32,6 @@ exports.addToCart = async (req, res) => {
     });
 
     await newCart.save();
-    // res.json({ result: "Product Added To Cart" });
     res.redirect("/shop");
   } catch (error) {
     console.error(error);
