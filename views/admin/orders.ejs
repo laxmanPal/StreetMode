@@ -123,33 +123,31 @@ include("../includes/admin/nav.ejs") %>
             <tr>
               <th>Sr No</th>
               <th>Image</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Sale Price</th>
-              <th>Quantity</th>
-              <th>Available</th>
+              <th>Ordered By</th>
+              <th>Total Price</th>
+              <th>Order Status</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <% let srNo = 1; %> <% for (let product of products) {%>
+            <% let srNo = 1; %> <% for (let order of orders) {%>
 
             <tr>
               <td><%= srNo++ %></td>
               <td>
                 <div class="avatar avatar-xl">
-                  <img
-                    src="img/avatars/1.png"
-                    alt="Avatar"
-                    class="rounded-circle"
-                  />
+                  <a href="order-details/<%= order._id %>">
+                    <img
+                      src="img/avatars/1.png"
+                      alt="Avatar"
+                      class="rounded-circle"
+                    />
+                  </a>
                 </div>
               </td>
-              <td><%= product.name %></td>
-              <td><%= product.price %></td>
-              <td><%= product.salePrice %></td>
-              <td><%= product.quantity %></td>
-              <td><%= product.isAvailable %></td>
+              <td><%= order.userId.name %></td>
+              <td>$ <%= order.totalPrice %></td>
+              <td><%= order.orderStatus %></td>
               <td class="" style="">
                 <a
                   href="javascript:;"

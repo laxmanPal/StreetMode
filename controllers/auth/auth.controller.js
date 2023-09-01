@@ -11,11 +11,12 @@ exports.getLogin = (req, res) => {
 
 exports.registerUser = async (req, res) => {
   try {
-    const { email, phone, password } = req.body;
+    const { name, email, phone, password } = req.body;
 
     const securePass = await bcrypt.hash(password, 12);
 
     const newUser = await new User({
+      name,
       email,
       phone,
       password: securePass,
