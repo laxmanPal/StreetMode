@@ -53,7 +53,7 @@ app.use(async (req, res, next) => {
     const user = await User.findById(req.session.userId);
 
     if (user) {
-      userName = user ? user.firstName : "User";
+      userName = user ? user.name : "User";
       next();
     }
   } catch (error) {

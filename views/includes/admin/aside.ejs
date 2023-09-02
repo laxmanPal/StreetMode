@@ -37,27 +37,27 @@
 
   <ul class="menu-inner py-1">
     <!-- Dashboards -->
-    <li class="menu-item active">
+    <li class="menu-item <%= path==='/admin' && 'active'%>">
       <a href="/admin" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-home-outline"></i> Dashboards
       </a>
     </li>
-    <li class="menu-item">
+    <li class="menu-item <%= path==='/users' && 'active'%>">
       <a href="users" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-account-outline"></i>Users
       </a>
     </li>
-    <li class="menu-item">
+    <li class="menu-item <%= path==='/products' && 'active'%>">
       <a href="products" class="menu-link">
         <i class="menu-icon mdi mdi-store"></i>Products
       </a>
     </li>
-    <li class="menu-item">
+    <li class="menu-item <%= path==='/orders' && 'active'%>">
       <a href="orders" class="menu-link">
         <i class="menu-icon mdi mdi-cart-variant"></i>Orders
       </a>
     </li>
-    <li class="menu-item">
+    <li class="menu-item <%= path==='/category' && 'active'%>">
       <a href="categories" class="menu-link">
         <i class="menu-icon mdi mdi-format-list-bulleted"></i>Category
       </a>

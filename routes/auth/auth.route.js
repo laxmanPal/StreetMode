@@ -4,6 +4,7 @@ const {
   getLogin,
   registerUser,
   loginUser,
+  logout,
 } = require("../../controllers/auth/auth.controller");
 
 const router = express.Router();
@@ -12,6 +13,8 @@ const router = express.Router();
 router.get("/register", getRegister);
 
 router.get("/login", getLogin);
+
+router.get("/logout", logout);
 
 // POST Routes
 

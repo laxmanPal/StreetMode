@@ -3,7 +3,7 @@ const Product = require("../../models/product.model");
 exports.getProducts = async (req, res) => {
   const products = await Product.find();
 
-  res.render("admin/products", { products: products });
+  res.render("admin/products", { products: products, path: "/products" });
 };
 
 exports.addProduct = async (req, res) => {
