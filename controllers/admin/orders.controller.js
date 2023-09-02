@@ -3,7 +3,7 @@ const Order = require("../../models/order.model");
 exports.getOrders = async (req, res) => {
   const orders = await Order.find().populate("userId");
 
-  res.render("admin/orders", isAdmin, { orders: orders, path: "/orders" });
+  res.render("admin/orders", { orders: orders, path: "/orders" });
   // res.send(orders);
 };
 
